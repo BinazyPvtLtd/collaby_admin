@@ -1,23 +1,23 @@
 const statusColorMap = {
   // common
-  pending: "bg-yellow-100 text-yellow-800",
-  accepted: "bg-green-100 text-green-800",
-  approved: "bg-green-100 text-green-800",
-  rejected: "bg-red-100 text-red-800",
-  withdrawn: "bg-gray-100 text-gray-700",
-  completed: "bg-emerald-100 text-emerald-800",
-  active: "bg-green-100 text-green-800",
-  inactive: "bg-gray-100 text-gray-700",
+  pending: "bg-[#f5f0df] text-[#725c22]",
+  accepted: "bg-[#e5f1e9] text-[#356347]",
+  approved: "bg-[#e5f1e9] text-[#356347]",
+  rejected: "bg-[#f6e8e8] text-[#8a4144]",
+  withdrawn: "bg-gray-100 text-gray-600",
+  completed: "bg-[#e5f1e9] text-[#356347]",
+  active: "bg-[#e5f1e9] text-[#356347]",
+  inactive: "bg-gray-100 text-gray-600",
 
   // campaigns
-  Draft: "bg-gray-100 text-gray-700",
-  Live: "bg-blue-100 text-blue-800",
-  Closed: "bg-purple-100 text-purple-800",
-  Completed: "bg-emerald-100 text-emerald-800",
+  Draft: "bg-gray-100 text-gray-600",
+  Live: "bg-[#e7ebf8] text-[#394b91]",
+  Closed: "bg-gray-100 text-gray-600",
+  Completed: "bg-[#e5f1e9] text-[#356347]",
 
   // deals
-  submitted: "bg-blue-100 text-blue-800",
-  under_review: "bg-indigo-100 text-indigo-800",
+  submitted: "bg-[#e7ebf8] text-[#394b91]",
+  under_review: "bg-[#e7ebf8] text-[#394b91]",
 };
 
 function normalize(value) {
@@ -31,7 +31,7 @@ function normalize(value) {
 export default function StatusBadge({ status }) {
   return (
     <span
-      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium capitalize ${normalize(status)}`}>
+      className={`inline-flex items-center rounded-md px-2 py-1 text-[11px] font-medium capitalize ${normalize(status)}`}>
       {String(status).replace(/_/g, " ")}
     </span>
   );

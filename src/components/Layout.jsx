@@ -45,12 +45,13 @@ const navItems = [
 
 function Sidebar({ onNavigate }) {
   return (
-    <aside className="hidden lg:flex w-64 flex-col bg-gray-900 text-gray-300 h-screen sticky top-0">
-      <div className="flex items-center gap-3 px-6 py-5 border-b border-gray-800">
-        <div className="h-9 w-9 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-white">
-          A
+    <aside className="hidden lg:flex w-64 shrink-0 flex-col bg-[#20232b] text-[#d5d8de] h-screen sticky top-0">
+      <div className="flex items-center gap-3 px-5 py-5 border-b border-white/10">
+        <div className="h-8 w-8 rounded-md bg-[#e7e9f1] flex items-center justify-center font-semibold text-[#303b70]">
+          C
         </div>
-        <span className="text-lg font-semibold text-white">Collaby Admin</span>
+        <span className="text-[15px] font-medium text-white">Collaby 
+        </span>
       </div>
       <SidebarContent onNavigate={onNavigate} />
     </aside>
@@ -59,21 +60,21 @@ function Sidebar({ onNavigate }) {
 
 function SidebarContent({ onNavigate }) {
   return (
-    <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+    <nav className="flex-1 px-3 py-5 space-y-1 overflow-y-auto">
       {navItems.map(({ to, label, icon }) => (
         <NavLink
           key={to}
           to={to}
           onClick={onNavigate}
           className={({ isActive }) =>
-            `flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+            `flex h-9 items-center gap-3 rounded-md px-3 text-[13px] font-medium transition-colors ${
               isActive
-                ? "bg-indigo-600 text-white"
-                : "hover:bg-gray-800 hover:text-white"
+                ? "bg-white/10 text-white before:absolute before:ml-[-12px] before:h-5 before:w-0.5 before:rounded-full before:bg-[#aeb9f1]"
+                : "text-[#b6bbc5] hover:bg-white/5 hover:text-white"
             }`
           }>
           <svg
-            className="h-5 w-5 shrink-0"
+            className="h-[18px] w-[18px] shrink-0"
             fill="none"
             stroke="currentColor"
             strokeWidth="1.5"
@@ -91,18 +92,18 @@ function MobileSidebar({ open, onClose }) {
   return (
     <>
       <div
-        className={`fixed inset-0 z-40 bg-black/50 transition-opacity lg:hidden ${
+        className={`fixed inset-0 right-0 bottom-0 left-0 z-40 bg-black/50 transition-opacity lg:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={onClose}
       />
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-64 flex-col bg-gray-900 text-gray-300 transition-transform lg:hidden ${
+        className={`fixed inset-y-0 left-0 z-50 flex w-[min(16rem,calc(100vw-2rem))] max-w-full flex-col bg-[#20232b] text-gray-300 transition-transform lg:hidden ${
           open ? "translate-x-0" : "pointer-events-none -translate-x-full"
         }`}>
-        <div className="flex items-center gap-3 px-6 py-5 border-b border-gray-800">
-          <div className="h-9 w-9 rounded-lg bg-indigo-600 flex items-center justify-center font-bold text-white">
-            A
+        <div className="flex items-center gap-3 px-5 py-5 border-b border-white/10">
+          <div className="h-8 w-8 rounded-md bg-[#e7e9f1] flex items-center justify-center font-semibold text-[#303b70]">
+            C
           </div>
           <span className="flex-1 text-lg font-semibold text-white">
             Collaby Admin
@@ -111,7 +112,7 @@ function MobileSidebar({ open, onClose }) {
             type="button"
             onClick={onClose}
             aria-label="Close menu"
-            className="-mr-2 rounded-lg p-2 text-gray-400 hover:bg-gray-800 hover:text-white">
+            className="-mr-2 rounded-md p-2 text-gray-400 hover:bg-white/10 hover:text-white">
             <svg
               className="h-6 w-6"
               fill="none"
@@ -143,12 +144,12 @@ function Topbar({ onMenuClick }) {
 
   return (
     <header className="sticky top-0 z-10 bg-white border-b border-gray-200 px-4 sm:px-6 py-4 flex items-center justify-between">
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 min-w-0">
         <button
           type="button"
           onClick={onMenuClick}
           aria-label="Open menu"
-          className="lg:hidden rounded-lg p-2 text-gray-600 hover:bg-gray-100">
+          className="lg:hidden rounded-md p-2 text-gray-600 hover:bg-gray-100">
           <svg
             className="h-6 w-6"
             fill="none"
@@ -162,22 +163,22 @@ function Topbar({ onMenuClick }) {
             />
           </svg>
         </button>
-        <h1 className="text-xl font-semibold text-gray-900">
+        <h1 className="truncate text-[15px] sm:text-base font-medium text-gray-800">
           Collaby Admin Panel
         </h1>
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4">
         <span className="hidden sm:block text-sm text-gray-600">
           {admin?.name || "Admin"}
         </span>
         <div className="flex items-center gap-2">
-          <div className="h-9 w-9 rounded-full bg-indigo-600 text-white flex items-center justify-center text-sm font-semibold">
+          <div className="h-8 w-8 rounded-full bg-[#e9ebf2] text-[#39477f] flex items-center justify-center text-sm font-medium">
             {(admin?.name || "A").charAt(0).toUpperCase()}
           </div>
           <button
             type="button"
             onClick={handleLogout}
-            className="text-sm text-gray-500 hover:text-red-600 font-medium">
+            className="min-h-11 min-w-11 px-2 -mr-2 text-sm text-gray-500 hover:text-gray-900 font-medium transition-colors">
             Logout
           </button>
         </div>
@@ -195,12 +196,12 @@ export default function Layout() {
   }, [location]);
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-[#f5f6f8]">
       <Sidebar />
       <MobileSidebar open={menuOpen} onClose={() => setMenuOpen(false)} />
       <div className="flex-1 flex flex-col min-w-0">
         <Topbar onMenuClick={() => setMenuOpen(true)} />
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-4 sm:p-6 lg:p-8">
           <Outlet />
         </main>
       </div>

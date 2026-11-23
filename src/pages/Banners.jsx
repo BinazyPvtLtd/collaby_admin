@@ -51,7 +51,7 @@ export default function Banners() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <PageHeader title="Banners" subtitle={`${banners.length} banners`} />
 
       <ErrorAlert message={error} onRetry={fetchBanners} />
@@ -59,7 +59,7 @@ export default function Banners() {
       {loading ? (
         <Spinner />
       ) : banners.length === 0 ? (
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm px-5 py-16 text-center">
+        <div className="bg-white rounded-lg border border-gray-200 px-5 py-16 text-center">
           <p className="text-sm text-gray-400">No banners found</p>
         </div>
       ) : (
@@ -67,7 +67,7 @@ export default function Banners() {
           {banners.map((banner) => {
             const src = uploadsUrl(banner.image)
             return (
-              <div key={banner.id} className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+              <div key={banner.id} className="bg-white rounded-lg border border-gray-200 overflow-hidden">
                 {src ? (
                   <img src={src} alt={banner.image} className="h-40 w-full object-cover bg-gray-100" />
                 ) : (

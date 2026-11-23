@@ -1,9 +1,9 @@
 export default function PageHeader({ title, subtitle, actions }) {
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
       <div>
-        <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
-        {subtitle && <p className="text-sm text-gray-500">{subtitle}</p>}
+        <h2 className="text-[23px] leading-7 font-medium tracking-[-0.025em] text-[#20232b]">{title}</h2>
+        {subtitle && <p className="mt-1 text-[13px] text-gray-500">{subtitle}</p>}
       </div>
       {actions && <div className="flex items-center gap-2">{actions}</div>}
     </div>
@@ -27,7 +27,7 @@ export function SearchInput({ value, onChange, placeholder = 'Search…' }) {
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="pl-9 pr-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 w-64"
+        className="h-10 w-full sm:w-64 pl-9 pr-3 rounded-md border border-gray-300 bg-white text-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4355a5]/25 focus:border-[#4355a5]"
       />
     </div>
   )
@@ -38,7 +38,7 @@ export function SelectInput({ value, onChange, options, placeholder = 'All' }) {
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white"
+      className="h-10 max-w-full px-3 rounded-md border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-[#4355a5]/25 focus:border-[#4355a5] bg-white"
     >
       <option value="">{placeholder}</option>
       {options.map((opt) =>
@@ -61,7 +61,7 @@ export function DangerButton({ onClick, children }) {
     <button
       type="button"
       onClick={onClick}
-      className="inline-flex items-center px-2.5 py-1.5 text-xs font-medium rounded-lg text-red-600 hover:bg-red-50 border border-transparent"
+      className="inline-flex items-center px-2.5 py-1.5 text-xs font-medium rounded-md text-[#a43d42] hover:bg-red-50 border border-transparent transition-colors"
     >
       {children}
     </button>
@@ -73,7 +73,7 @@ export function ActionButton({ onClick, children }) {
     <button
       type="button"
       onClick={onClick}
-      className="inline-flex items-center px-2.5 py-1.5 text-xs font-medium rounded-lg text-indigo-600 hover:bg-indigo-50 border border-transparent"
+      className="inline-flex items-center px-2.5 py-1.5 text-xs font-medium rounded-md text-[#4355a5] hover:bg-[#edf0fa] border border-transparent transition-colors"
     >
       {children}
     </button>

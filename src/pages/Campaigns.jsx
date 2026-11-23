@@ -40,16 +40,16 @@ export default function Campaigns() {
   const targeting = detail?.business_hack_step3
   const media = detail?.business_hack_step4
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <PageHeader title="Campaigns" subtitle={`${pagination.total} total campaigns`} />
       <div className="flex flex-wrap items-center gap-3">
         <SearchInput value={search} onChange={setSearch} placeholder="Search by campaign name…" />
         <SelectInput value={campaignType} onChange={setCampaignType} options={typeOptions} placeholder="All types" />
         <button type="button" onClick={() => setFilters({ search: search.trim(), campaignType })}
-          className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium">Apply</button>
+          className="px-4 py-2 rounded-lg bg-[#4355a5] hover:bg-[#35468f] text-white text-sm font-medium">Apply</button>
       </div>
       <ErrorAlert message={error} onRetry={refetch} />
-      <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
+      <div className="bg-white rounded-lg border border-gray-200">
         {loading ? <Spinner /> : <DataTable columns={columns} rows={rows}
           actions={(row) => <ActionButton onClick={() => setDetail(row)}>View</ActionButton>} />}
         <Pagination page={pagination.page} totalPages={pagination.totalPages} total={pagination.total}
@@ -76,7 +76,7 @@ export default function Campaigns() {
             <Field label="Age Range">{targeting ? `${targeting.minAge}–${targeting.maxAge}` : '—'}</Field>
             <Field label="Created">{date(campaign.createdAt)}</Field>
           </dl>
-          <dl className="space-y-4">
+          <dl className="space-y-6">
             <Field label="Description">{targeting?.campaignDescription}</Field>
             <Field label="Dos">{targeting?.dos?.join('; ') || '—'}</Field>
             <Field label="Don'ts">{targeting?.donts?.join('; ') || '—'}</Field>

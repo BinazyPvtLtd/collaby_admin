@@ -56,14 +56,14 @@ export default function Businesses() {
   ]
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <PageHeader title="Businesses" subtitle={`${pagination.total} total businesses`} />
 
 
       {success && <p role="status" className="rounded-lg bg-green-50 px-4 py-3 text-sm text-green-800">{success}</p>}
       <ErrorAlert message={error} onRetry={refetch} />
 
-      <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
+      <div className="bg-white rounded-lg border border-gray-200">
         {loading ? (
           <Spinner />
         ) : (

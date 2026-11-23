@@ -26,11 +26,11 @@ export default function Referrals() {
   ]
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <PageHeader title="Referrals" subtitle={`${pagination.total} total referrals`} />
       <ErrorAlert message={error} onRetry={refetch} />
 
-      <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
+      <div className="bg-white rounded-lg border border-gray-200">
         {loading ? (
           <Spinner />
         ) : (

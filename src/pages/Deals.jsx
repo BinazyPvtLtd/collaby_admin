@@ -44,7 +44,7 @@ export default function Deals() {
   ]
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <PageHeader title="Deals" subtitle={`${pagination.total} total deals`} />
 
       <div className="flex flex-wrap items-center gap-3">
@@ -52,7 +52,7 @@ export default function Deals() {
         <button
           type="button"
           onClick={applyFilter}
-          className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium"
+          className="px-4 py-2 rounded-lg bg-[#4355a5] hover:bg-[#35468f] text-white text-sm font-medium"
         >
           Apply
         </button>
@@ -60,7 +60,7 @@ export default function Deals() {
 
       <ErrorAlert message={error} onRetry={refetch} />
 
-      <div className="bg-white rounded-xl border border-gray-200 shadow-sm">
+      <div className="bg-white rounded-lg border border-gray-200">
         {loading ? (
           <Spinner />
         ) : (

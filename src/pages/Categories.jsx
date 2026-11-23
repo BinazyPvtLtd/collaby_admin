@@ -104,10 +104,10 @@ export default function Categories() {
   };
 
   return (
-    <div className="p-6">
-      <div className="flex items-center justify-between mb-6">
+      <div className="p-0">
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
         <h1 className="text-2xl font-semibold text-gray-900">Categories</h1>
-        <button onClick={openCreateModal} className="rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-medium px-4 py-2 text-sm transition-colors">
+        <button onClick={openCreateModal} className="rounded-lg bg-[#4355a5] hover:bg-[#35468f] text-white font-medium px-4 py-2 text-sm transition-colors">
           Add Category
         </button>
       </div>
@@ -118,24 +118,24 @@ export default function Categories() {
         </div>
       )}
 
-      <div className="mb-4 flex items-center gap-4">
+      <div className="mb-4 flex flex-wrap items-center gap-3">
         <div className="relative">
           <input
             type="text"
             placeholder="Search categories..."
             value={search}
             onChange={handleSearch}
-            className="w-72 rounded-lg border border-gray-300 px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            className="w-full sm:w-72 h-11 rounded-md border border-gray-300 px-3 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-[#4355a5]/25 focus:border-[#4355a5]"
           />
         </div>
-        <select value={statusFilter} onChange={handleStatusChange} className="rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+        <select value={statusFilter} onChange={handleStatusChange} className="w-full sm:w-auto max-w-full h-11 rounded-md border border-gray-300 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#4355a5]/25 focus:border-[#4355a5]">
           <option value="">All Status</option>
           <option value="true">Active</option>
           <option value="false">Inactive</option>
         </select>
       </div>
 
-      <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead className="bg-gray-50 border-b border-gray-200">
@@ -156,15 +156,15 @@ export default function Categories() {
                   <tr key={cat.id} className="hover:bg-gray-50">
                     <td className="px-4 py-3 font-medium text-gray-900">{cat.category_name}</td>
                     <td className="px-4 py-3">
-                      <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${cat.status ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}>
+                      <span className={`inline-flex min-h-6 items-center px-2.5 py-1 rounded-md text-[12px] leading-4 font-medium ${cat.status ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}>
                         {cat.status ? "Active" : "Inactive"}
                       </span>
                     </td>
                     <td className="px-4 py-3 text-gray-500">{formatDate(cat.created_at || cat.createdAt)}</td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2">
-                        <button onClick={() => openEditModal(cat)} className="text-indigo-600 hover:text-indigo-900 text-sm font-medium">Edit</button>
-                        <button onClick={() => handleDelete(cat.id)} className="text-red-600 hover:text-red-900 text-sm font-medium">Delete</button>
+                      <div className="flex items-center gap-1">
+                        <button onClick={() => openEditModal(cat)} className="inline-flex min-h-11 min-w-11 items-center justify-center px-2 rounded-md text-indigo-600 hover:text-indigo-900 text-sm font-medium">Edit</button>
+                        <button onClick={() => handleDelete(cat.id)} className="inline-flex min-h-11 min-w-11 items-center justify-center px-2 rounded-md text-red-600 hover:text-red-900 text-sm font-medium">Delete</button>
                       </div>
                     </td>
                   </tr>
@@ -203,7 +203,7 @@ export default function Categories() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
           <div className="bg-white rounded-xl shadow-xl w-full max-w-md p-6">
             <h2 className="text-lg font-semibold text-gray-900 mb-4">{editing ? "Edit Category" : "Add Category"}</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Category Name</label>
                 <input
@@ -211,20 +211,20 @@ export default function Categories() {
                   required
                   value={form.category_name}
                   onChange={e => setForm(f => ({ ...f, category_name: e.target.value }))}
-                  className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4355a5]/25 focus:border-[#4355a5]"
                   placeholder="Enter category name"
                 />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
-                <select value={form.status} onChange={e => setForm(f => ({ ...f, status: e.target.value === "true" }))} className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                <select value={form.status} onChange={e => setForm(f => ({ ...f, status: e.target.value === "true" }))} className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4355a5]/25 focus:border-[#4355a5]">
                   <option value={true}>Active</option>
                   <option value={false}>Inactive</option>
                 </select>
               </div>
               <div className="flex justify-end gap-3 pt-2">
-                <button type="button" onClick={closeModal} className="px-4 py-2 rounded-lg border border-gray-300 text-sm font-medium hover:bg-gray-50">Cancel</button>
-                <button type="submit" disabled={submitting} className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium disabled:opacity-50">
+                <button type="button" onClick={closeModal} className="px-4 py-2 rounded-md border border-gray-300 text-sm font-medium hover:bg-gray-50">Cancel</button>
+                <button type="submit" disabled={submitting} className="px-4 py-2 rounded-lg bg-[#4355a5] hover:bg-[#35468f] text-white text-sm font-medium disabled:opacity-50">
                   {submitting ? "Saving…" : (editing ? "Update" : "Create")}
                 </button>
               </div>
