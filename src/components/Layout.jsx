@@ -69,12 +69,12 @@ function SidebarContent({ onNavigate }) {
           className={({ isActive }) =>
             `flex h-9 items-center gap-3 rounded-md px-3 text-[13px] font-medium transition-colors ${
               isActive
-                ? "bg-white/10 text-white before:absolute before:ml-[-12px] before:h-5 before:w-0.5 before:rounded-full before:bg-[#aeb9f1]"
+                ? "bg-white/10 text-white before:absolute before:-ml-3 before:h-5 before:w-0.5 before:rounded-full before:bg-[#aeb9f1]"
                 : "text-[#b6bbc5] hover:bg-white/5 hover:text-white"
             }`
           }>
           <svg
-            className="h-[18px] w-[18px] shrink-0"
+            className="h-4.5 w-4.5 shrink-0"
             fill="none"
             stroke="currentColor"
             strokeWidth="1.5"
